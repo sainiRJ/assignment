@@ -11,7 +11,7 @@ router.get('/:id',employeeController.getEmployeeDetail)
 
 router.post('/deleteEmployee/:id',employeeController.deleteEmployeeDetail)
 
-router.post('/updateEmployee',employeeController.updateEmployee)
+router.post('/updateEmployee/:employee_id',employeeController.updateEmployee)
 
 router.get('/listEmployee/:page/:perPage',employeeController.listEmployee)
 
