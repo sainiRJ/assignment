@@ -62,8 +62,8 @@ const sql2 = `
 
 
 exports.updateEmployee=(req,res,next)=>{
-    const employee_id = req.body.employee_id;
-    const name = req.body.name;
+    const employee_id = req.params.employee_id;
+    const emp ={name: req.body.name}
    const contact ={
     email : req.body.email,
     mobile : req.body.mobile,
@@ -72,10 +72,10 @@ exports.updateEmployee=(req,res,next)=>{
 
     const sql1= `UPDATE employee SET ? WHERE employee_id=?;`
     const sql2= `UPDATE contactDetails SET ? WHERE employee_id=?`
-    db.query(sql1,[name,employee_id],(err,result)=>{
+    db.query(sql1,[emp,employee_id],(err,result)=>{
         if(err) throw err;
     })
-    db.query(sql2,[contact],(err,result)=>{
+    db.query(sql2,[contact,employee_id],(err,result)=>{
         if(err) throw err;
         res.send("update successfully")
     })
